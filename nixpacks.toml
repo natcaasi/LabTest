@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["nodejs_18"]
+nixPkgs = ["nodejs_22", "python3", "gcc", "gnumake"]
 
 [phases.install]
 cmds = ["npm ci"]
@@ -7,8 +7,10 @@ cmds = ["npm ci"]
 [phases.build]
 cmds = ["npm run build"]
 
+[phases.build.env]
+NODE_ENV = "production"
+TZ = "Asia/Singapore"
+
 [start]
 cmd = "npm start"
-
-[phases.build.env]
-PORT = "3000"
+env.TZ = "Asia/Singapore"
